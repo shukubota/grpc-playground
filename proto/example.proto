@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package example;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/shukubota/grpc-playground/gen/go/proto/example";
+
+service Example {
+  rpc GetMessage(GetMessageRequest) returns (GetMessageResponse) {
+    option (google.api.http) = {
+      get: "/example-messages"
+    };
+  }
+}
+
+message GetMessageRequest {
+}
+
+message GetMessageResponse {
+  string message = 1;
+}
